@@ -23,6 +23,6 @@ jobs:
         run: bundle 
         
       - name: Build site
-        run: jekyll build --verbose --config=_config.yml,_config.prod.yml -d 
+        run:  bundle exec jekyll b --verbose --config=_config.yml,_config.prod.yml -d 
         env:
           JEKYLL_ENV: "production"
