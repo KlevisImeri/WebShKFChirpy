@@ -1,38 +1,67 @@
-name: Deploy
-
+name: "Deploy"
 on:
   push:
     branches:
       - main
+    paths-ignore:
+      - .gitignore
+      - README.md
+      - LICENSE
+
   workflow_dispatch:
-    
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "deploy"
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby: ["3.2"]
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v3
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.2'  
+          ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
 
-      - name: Install dependencies
-        run: bundle install
-        
       - name: Build site
         run: bundle exec jekyll b --verbose --config=_config.yml,_config.prod.yml -d "_site"
         env:
           JEKYLL_ENV: "production"
 
-      - name: Commit and push site changes
+      - name: Deploy to build branch
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: "_site"
+          publish_branch: build
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+
+      - name: Test site
         run: |
-          git config --global klevisimeri "github-actions"
-          git config --global klevisimeri11@gmail.com "actions@github.com"
-          git add _site
-          git commit -m "Update site"
-          git push origin main
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          bundle exec htmlproofer _site \
+            \-\-disable-external=true \
+            \-\-ignore-urls "/^http:\/\/127.0.0.1/,/^http:\/\/0.0.0.0/,/^http:\/\/localhost/"
+
+      - name: Upload site artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: "_site"
