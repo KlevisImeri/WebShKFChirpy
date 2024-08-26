@@ -8,8 +8,8 @@ timezone: Europe/Budapest
 theme: jekyll-theme-chirpy
 theme_mode: 
 
-# url: "https://KlevisImeri.github.io"
-url: "http://localhost:4000"
+url: "https://KlevisImeri.github.io"
+# url: "http://localhost:4000"
 baseurl: 
 github:
   username: KlevisImeri 
