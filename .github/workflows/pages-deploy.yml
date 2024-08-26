@@ -5,7 +5,7 @@ on:
     branches:
       - main
   workflow_dispatch:
-
+    
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,13 +16,13 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 'head'  # This will use the latest version of Ruby
+          ruby-version: '3.2'  
           bundler-cache: true
 
       - name: Install dependencies
-        run: bundle 
+        run: bundle install
         
       - name: Build site
-        run: jekyll build --verbose --config=_config.yml,_config.prod.yml -d 
+        run: bundle exec jekyll b --verbose --config=_config.yml,_config.prod.yml -d "_site"
         env:
           JEKYLL_ENV: "production"

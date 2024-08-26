@@ -2,6 +2,9 @@
 
 source "https://rubygems.org"
 
+gem 'csv'
+gem 'logger'
+
 gem "jekyll", "~> 4.3"
 gem "jekyll-paginate", "~> 1.1"
 gem "jekyll-redirect-from", "~> 0.16"
