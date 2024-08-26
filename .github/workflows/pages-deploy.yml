@@ -1,4 +1,4 @@
-name: "Deploy"
+name: Deploy
 
 on:
   push:
@@ -26,3 +26,13 @@ jobs:
         run: bundle exec jekyll b --verbose --config=_config.yml,_config.prod.yml -d "_site"
         env:
           JEKYLL_ENV: "production"
+
+      - name: Commit and push site changes
+        run: |
+          git config --global klevisimeri "github-actions"
+          git config --global klevisimeri11@gmail.com "actions@github.com"
+          git add _site
+          git commit -m "Update site"
+          git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
