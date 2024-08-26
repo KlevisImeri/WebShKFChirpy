@@ -1,6 +1,6 @@
 # Website i Shoqatës Kosovare të Fizikës
 
-linku: 
+linku: https://klevisimeri.github.io/WebShKFChirpy/
 
 
 ### Folderi `_post` 
