@@ -9,7 +9,7 @@ gem "jekyll-seo-tag", "~> 2.7"
 gem "jekyll-archives", "~> 2.2"
 gem "jekyll-sitemap", "~> 1.4"
 gem "jekyll-include-cache", "~> 0.2"
-gem "jekyll-theme-chirpy", "~> 7.0", ">= 7.0.1"
+  gem "jekyll-theme-chirpy", "~> 7.0", ">= 7.0.1"
 
 group :test do
   gem "html-proofer", "~> 4.4"
