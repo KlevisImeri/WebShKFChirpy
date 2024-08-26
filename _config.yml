@@ -8,9 +8,6 @@ timezone: Europe/Budapest
 theme: jekyll-theme-chirpy
 theme_mode: 
 
-url: "https://KlevisImeri.github.io"
-# url: "http://localhost:4000"
-baseurl: 
 github:
   username: KlevisImeri 
 
@@ -21,7 +18,7 @@ social:
     - https://www.facebook.com/ShoqataKosovareeFizikes
     - https://github.com/KlevisImeri 
 
-toc: truep
+toc: true
 pwa:
   enabled: true 
   cache:
