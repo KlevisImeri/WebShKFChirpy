@@ -1,9 +1,10 @@
 title: SHKF 
 tagline: Shoqata Kosovare e Fizikës 
 description: Shoqata Kosovare e Fizikës
-avatar: /assets/img/favicons/logowhite.png
+avatar: /assets/img/favicons/logo.png
+avatar_dark: /assets/img/favicons/logowhite.png
 
-lang: al
+lang: sq
 timezone: Europe/Budapest
 theme: jekyll-theme-chirpy
 theme_mode: 
@@ -20,10 +21,14 @@ social:
 
 toc: true
 pwa:
-  enabled: true 
+  enabled: true
   cache:
-    enabled: true 
-    deny_paths:
+    enabled: true # The option for PWA offline cache
+    # Paths defined here will be excluded from the PWA cache.
+    # Usually its value is the `baseurl` of another website that
+    # shares the same domain name as the current website.
+    deny_paths: 
+future: true
 paginate: 10
 
 
@@ -33,7 +38,8 @@ plugins:
   - jekyll-seo-tag
   - jekyll-archives
   - jekyll-sitemap
-  # - jekyll-theme-chirpy #doest let to compile
+
+
 
 # ------------ The following options are not recommended to be modified ------------------
 

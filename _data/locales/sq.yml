@@ -10,11 +10,11 @@ layout:
 # The tabs of sidebar
 tabs:
   # format: <filename_without_extension>: <value>
-  home: Faqja Kryesore
+  home: Shtëpia
   categories: Kategoritë
   tags: Etiketat
   archives: Arkivat
-  about: Rreth
+  about: Rreth Nesh
 
 # the text displayed in the search bar & search results
 search:
@@ -75,7 +75,7 @@ post:
 # See: <http://strftime.net/>, <https://day.js.org/docs/en/display/format>
 df:
   post:
-    strftime: "%e %b, %Y"
+    strftime: "%b %e, %Y"
     dayjs: "ll"
   archives:
     strftime: "%b"
