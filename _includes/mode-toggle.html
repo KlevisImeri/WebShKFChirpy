@@ -29,6 +29,10 @@
         self.notify();
       });
 
+      window.onload = () => {
+        this.updateAvatar();
+      }
+
       if (!this.hasMode) {
         return;
       }
@@ -38,6 +42,7 @@
       } else {
         this.setLight();
       }
+      
     }
 
     get sysDarkPrefers() {
@@ -87,12 +92,10 @@
     updateAvatar() {
       const avatar = document.getElementById("avatar_img");
       if (avatar) {
-        const src = this.isDarkMode || (!this.mode && this.isPreferDark) ? "{{ site.avatar_dark }}" : "{{ site.avatar }}";
-        if(avatar.src !== src) avatar.src = src;
+        avatar.src = this.isDarkMode || (!this.mode && this.isPreferDark) ? "{{ site.avatar_dark }}" : "{{ site.avatar }}";
       } else {
-        console.log('avatar is null');
+        console.debug('Avatar not found');
       }
-      console.log(avatar);
     }
 
     {%- comment -%}
@@ -118,7 +121,7 @@
           this.setDark();
         }
       }
-      console.log('flip');
+      console.debug('flip');
       this.updateAvatar();
       this.notify();
     }
@@ -126,11 +129,6 @@
 
   const modeToggle = new ModeToggle();
 
-  
-  window.onload = () => {
-    console.log('onload');
-    modeToggle.updateAvatar();
-    // window.onload = null;
-  };
+
 
 </script>
