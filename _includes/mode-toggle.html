@@ -21,7 +21,6 @@
     constructor() {
       let self = this;
 
-      // {%- comment -%} always follow the system prefers {%- endcomment -%}
       this.sysDarkPrefers.addEventListener('change', () => {
         if (self.hasMode) {
           self.clearMode();
@@ -65,7 +64,7 @@
       return sessionStorage.getItem(ModeToggle.MODE_KEY);
     }
 
-    // {%- comment -%} get the current mode on screen {%- endcomment -%}
+
     get modeStatus() {
       if (this.hasMode) {
         return this.mode;
@@ -98,9 +97,7 @@
       }
     }
 
-    // {%- comment -%}
-    //   Notify another plugins that the theme mode has changed
-    // {%- endcomment -%}
+
     notify() {
       window.postMessage(
         {
