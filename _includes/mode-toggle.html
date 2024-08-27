@@ -91,7 +91,7 @@
     updateAvatar() {
       const avatar = document.getElementById("avatar_img");
       if (avatar) {
-        avatar.src = this.isDarkMode || (!this.mode && this.isPreferDark) ? "{{ site.avatar_dark_url }}" : "{{ site.avatar_url }}";
+        avatar.src = this.isDarkMode || (!this.mode && this.isPreferDark) ? "{{ site.avatar_dark | relative_url }}" : "{{ site.avatar | relative_url }}";
       } else {
         console.debug('Avatar not found');
       }
