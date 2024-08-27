@@ -21,7 +21,7 @@
     constructor() {
       let self = this;
 
-      {%- comment -%} always follow the system prefers {%- endcomment -%}
+      // {%- comment -%} always follow the system prefers {%- endcomment -%}
       this.sysDarkPrefers.addEventListener('change', () => {
         if (self.hasMode) {
           self.clearMode();
@@ -65,7 +65,7 @@
       return sessionStorage.getItem(ModeToggle.MODE_KEY);
     }
 
-    {%- comment -%} get the current mode on screen {%- endcomment -%}
+    // {%- comment -%} get the current mode on screen {%- endcomment -%}
     get modeStatus() {
       if (this.hasMode) {
         return this.mode;
@@ -92,15 +92,15 @@
     updateAvatar() {
       const avatar = document.getElementById("avatar_img");
       if (avatar) {
-        avatar.src = this.isDarkMode || (!this.mode && this.isPreferDark) ? "{{ site.avatar_dark }}" : "{{ site.avatar }}";
+        avatar.src = this.isDarkMode || (!this.mode && this.isPreferDark) ? "{{ site.avatar_dark_url }}" : "{{ site.avatar_url }}";
       } else {
         console.debug('Avatar not found');
       }
     }
 
-    {%- comment -%}
-      Notify another plugins that the theme mode has changed
-    {%- endcomment -%}
+    // {%- comment -%}
+    //   Notify another plugins that the theme mode has changed
+    // {%- endcomment -%}
     notify() {
       window.postMessage(
         {
