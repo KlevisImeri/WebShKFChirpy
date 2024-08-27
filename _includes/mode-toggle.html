@@ -28,9 +28,9 @@
         self.notify();
       });
 
-      window.onload = () => {
-        self.updateAvatar();
-      };
+      document.addEventListener('DOMContentLoaded', () => {
+        this.updateAvatar();
+      });
 
       if (!this.hasMode) {
         return;
